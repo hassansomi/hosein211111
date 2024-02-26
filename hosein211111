@@ -1,0 +1,290 @@
+Deploy an Appchain using Madara & Karnot (Avail clash-node) Persian
+Gem Gym
+Gem Gym
+
+·
+Following
+
+6 min read
+·
+Jan 26, 2024
+74
+
+
+
+
+
+
+point on Avail clash of node
+
+
+نصب پیش نیاز ها
+
+sudo apt update
+
+apt-get install protobuf-compiler
+
+apt install clang gcc libssl-dev pkg-config
+
+sudo apt install npm
+
+npm install -g yarn 
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+source ~/.bashrc
+
+nvm install node
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+rustup update stable
+
+rustc --version
+
+sudo apt install nodejs
+
+sudo apt install npm
+
+cd ~
+curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh
+
+sudo bash /tmp/nodesource_setup.sh
+
+sudo apt install nodejs
+
+node -v
+
+cd ~
+
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+
+ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+
+docker run hello-world
+
+sudo apt update
+
+sudo apt upgrade
+
+wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz
+
+sudo tar -C /usr/local/ -xzf go1.13.5.linux-amd64.tar.gz
+
+cd /usr/local/
+
+echo $PATH
+
+sudo nano $HOME/.profile
+
+export PATH=$PATH:/usr/local/go/bin
+
+source .profile
+
+cat $HOME/.profile
+
+apt install golang-go
+
+go version
+
+Y enter
+
+
+1 Enter
+
+نصب سورس پروژه
+
+git clone https://github.com/karnotxyz/madara-cli
+
+cd madara-cli
+
+cargo build --release
+
+
+
+./target/release/madara init
+
+یک نام انتخاب میکنید و اینتر میکنید
+
+
+Enter avail
+
+
+سیو میکنیم اطلاعات رو و برای ادرسی که داده فاست میگیریم میتونین فاست رو از کیف پولتون هم بفرستید براش
+
+اگر نمیخواید والت جدید بسازید و میخواید والت  دیگه ای رو ایمپورت کنین از
+کد زیر میتونید استفاده کنید . جای اپ نام باید نام اپ که دیپلوی کردید
+رو وارد کنید 
+nano /root/.madara/app-chains/YOURAPPNAME/da-config.json
+
+seed , address میتنونین 
+رو جایگزین کنین باید با کیبورد به سمت چپ و راست هدایت کنید
+و در پایان کنترل + ایکس رو میزنین و سیو میکنید و ادامه میدید
+اما اگرنمیخواید این مرحله چشم پوشی کنید
+apt install screen
+
+screen -S madara
+
+./target/release/madara run
+
+y Enter
+
+اسمی که برای اپ بالا دادید و ساختید رو انتخاب میکنید و ران میکنید . این ممکنه طول بکشه چندین دقیقه
+
+
+Control A + D
+
+./target/release/madara explorer
+دیدن لاگ madara
+
+docker logs -f madara-explorer
+پر کردن فرم زیر
+
+https://docs.google.com/forms/d/e/1FAIpQLSdxqFdvI4iGewNL_N-8q8gEdJdtCeBMl9QSHp-uxnbN0RtfKA/viewform
+
+ریپوزیت گیت هاب
+
+فال جیسون رو دانلود میکنید و اطلاعاتتونو پر میکنید .میتونین با ویرچوال استودیو این کارو کنید یا اگر میتونید با گیت هاب
+
+https://github.com/karnotxyz/avail-campaign-listing/files/14058075/listing.json
+
+1- اسم اپ چین که دیپلوی کردید
+
+2- pngاپلود لوگو
+
+3- pc_url (port 9944 by default)
+
+4- explorer_url: A public endpoint where your app chain explorer is visible
+
+5- metrics_endpoint: A public endpoint for your prometheus metrics (port 9615/metrics by default)
+
+6- Create a UUID. You can use an online generator.
+
+
+7- اسم فایل جیسون رو همون اسمی میزارید که تو مرحله ۷ ایدی ساختید
+
+Example:
+
+
+
+Save json file
+
+بعد از این مرحله با استفاده از هر کدوم تز برنامه های زیر که باهاش راحت هستید میتونید فایل خودتون رو داخل سرور خودتون جایگذاری کنید و بعد از اون کدهای زیر رو وارد کنید
+
+FileZilla
+FileZilla - The free FTP solution for both client and server. Filezilla is open source software distributed free of…
+filezilla-project.org
+
+MobaXterm free Xserver and tabbed SSH client for Windows
+Free X server for Windows with tabbed SSH terminal, telnet, RDP, VNC, Xdmcp, Mosh and X11-forwarding. Portable or…
+mobaxterm.mobatek.net
+
+بعد از کدهای زیر رو وارد کنید
+
+npx prettier - check your_jason_file_name
+
+npx prettier - write your_jason_file_name
+نام فایل جیسون خود که داخل سرور وارد کردید به جای your_jason_file_name قرار دهید
+
+با کدهای زیر هم میتونید پورتهای خودتون رو باز کنید تا رپو گیتهاب به مشکل نخوره
+
+sudo apt install ufw
+
+sudo ufw enable
+sudo ufw allow 22
+sudo ufw allow 4000
+sudo ufw allow 5353
+sudo ufw allow 47250
+sudo ufw allow 39276
+sudo ufw allow 36347
+sudo ufw allow 43759
+sudo ufw allow 40815
+sudo ufw allow 30333
+sudo ufw allow 9944
+sudo ufw allow 9615
+Go to : https://github.com/karnotxyz/avail-campaign-listing
+
+
+click on fork
+
+
+click on create fork
+
+
+میریم داخل پوشه مشخص شده
+
+
+اپلود فایل رو میزنیم
+
+
+طبق تصویر فایل جیسون رو اپلود و مشخصات رو وارد میکنیم
+
+جای اپ چین اسم اپ خودتونو میزنینAdding <app_chain_name>
+
+به لینک زیر میریم و روی گزینه مشخص شده کلیک میکنیم
+
+https://github.com/karnotxyz/avail-campaign-listing
+
+
+باز هم روی گزینه مشخص شده کلیک میکنیم
+
+
+روی گزینه های مشخص شده کلیک میکنیم دقت کنین در لیست باید فورک خودتون که فایل جایگزینش کردیمو انتخاب کنید
+
+
+
+در پایان دوباره فایل جیسون که ساختیمو درگ دراپ میکنیم و ریپو رو درخواست میدیم
+
+
+خب همه چیز به درستی پیش رفت و ریپوی ما ایجاد شد و باید منتظر واکنش تیم باشیم اگر تایید بشه اپ چین شما ایجاد میشه
+
+…………………………………………………………………………………………………
+
+اگر تایید بشید پوینت بهتون تعلق میگیره و میتونین تو لینک زیر ببینید
+
+Avail - Clash of nodes leaderboard
+A statistics dashboard and leaderboard for Avail Clash of nodes testnet
+leaderboard.availproject.org
+
+git clone https://github.com/sarox0987/avail-madara
+cd avail-madara
+nano rpc.json
+add your Appchain RPC (server IP)
+
+Ctrl+X Y Enter
+
+go mod tidy
+
+screen -S tx
+
+go run main.go
+Ctrl+A+D
+
+اگر سوالی داشتید در دیسکور پروژه در خدمتتون هستیم
+
+Join the Avail Discord Server!
+Avail is a modular blockchain solution optimized for data availability that lets you spin up blockchains in minutes! |…
+discord.gg
+
+
+💎 GEM GYM 💎
+Node guide/Crypto analysis/Airdrop opportunities ➖ ➖ ➖ ➖ لینک گروه : https://t.me/+kjxyLsHnGesyNGZk ➖ ➖ ➖ ➖ آیدی ادمین…
+t.me
+
+https://twitter.com/gemgymcrypto
